@@ -14,16 +14,7 @@ class DefaultController extends Controller
     {
         return $this->render('ProductLineBundle:Default:index.html.twig');
     }
-    /**
-     * @Route("/product", name="product")
-     */
-    public function productFormAction()
-    {
-        die('asd');
-//        return $this->render('ProductLineBundle:Default:index.html.twig');
-    }
-    
-    
+
     
     
 }
