@@ -1,0 +1,65 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>
+
+    <div class="machine">
+        <div class="machine1">
+            <label>Maszyna 1</label>
+            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
+            <div class="machine-panel">
+               Parametry maszyny
+                <ul class="parameters">
+                    <li>Status:</li>
+                    <li>Nr Zamówienia:</li>
+                    <li>Produkt:</li>
+                    <li>Postępy:</li>
+                </ul>               
+            </div>
+        </div>
+        <div class="machine1">
+            <label>Maszyna 2</label>
+            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
+            <div class="machine-panel">
+                Parametry maszyny
+                <ul class="parameters">
+                    <li>Status:</li>
+                    <li>Nr Zamówienia:</li>
+                    <li>Produkt:</li>
+                    <li>Postępy:</li>
+                </ul>
+            </div>
+        </div>
+        <div class="machine1">
+            <label>Maszyna 3</label>
+            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
+            <div class="machine-panel">
+                Parametry maszyny
+                <ul class="parameters">
+                    <li>Status:</li>
+                    <li>Nr Zamówienia:</li>
+                    <li>Produkt:</li>
+                    <li>Postępy:</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button type="button" class="button">Panel administratora</button>
+        <button type="button" class="button">Złóż Zamówienie</button>
+        <a href="{{ path('product') }}" class="button">Dodaj Produkt</a>
+        <button type="button" class="button">Stan Magazynowy</button>
+        <button type="button" class="button">Zarządzanie surowcami</button>
+        
+    </div>            
+   
+    
+    
+</h1>
+
+
+{% endblock %}

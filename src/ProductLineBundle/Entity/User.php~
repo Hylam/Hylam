@@ -1,0 +1,123 @@
+<?php
+
+namespace ProductLineBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50)
+     */
+    protected $name;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="surname", type="string", length=50)
+     */
+    protected $surname;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="employeID", type="integer")
+     */
+    protected $employeID;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    
+    function getName() {
+        return $this->name;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string 
+     */    
+    
+    function getSurname() {
+        return $this->surname;
+    }
+    
+    /**
+     * Get employeID
+     *
+     * @return Integer 
+     */
+
+    function getEmployeID() {
+        return $this->employeID;
+    }
+    
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return User
+     */    
+
+    function setName($name) {
+        $this->name = $name;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     * @return User
+     */    
+    
+    function setSurname($surname) {
+        $this->surname = $surname;
+    }
+    
+    /**
+     * Set employeID
+     *
+     * @param string $employeID
+     * @return User
+     */    
+
+    function setEmployeID($employeID) {
+        $this->employeID = $employeID;
+    }
+
+        
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic   
+    }    
+    
+}

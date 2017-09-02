@@ -1,0 +1,56 @@
+
+.machine{
+    position: relative;
+    float: left;
+    display: flex;
+    background: red;
+    clear: both;
+   
+}
+.button{
+    background: blue;
+    height: 30px;
+    clear: both;
+}
+
+.machine1{
+    position: relative;
+    float: left;
+    display: grid;
+    background: red;   
+}
+
+.machine-panel{
+    background: blue;
+    height: 400px;
+    width: 200px;
+}
+
+.buttons{
+    position: relative;
+    float: left;
+    display: grid;
+    border-spacing: 30px; 
+    
+}
+
+body{
+    background-image: url("../img/background.jpeg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.parameters{
+    font-size: 15px;
+    line-height: 40px;
+}
+
+.form-foss{
+    position: static;
+    background: red;
+    display: inline-block;
+    float: none; 
+    
+
+}
+
