@@ -4,8 +4,24 @@
     <h1>Product creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+
+    <div id="addSpecification">
+        <h2>Specyfikacja</h2>
+
+        <div class="group addWindow">
+            <select name="ingredient[]">
+                {% for product in products %}
+                    <option value="{{product.name}}">{{product.name}}</option>
+                {% endfor %}
+            </select>
+
+            <input type="number" name="quantity[]">
+        </div>
+        <button id="add" type="button" >Dodaj składnik</button>
+    </div>
+
+    <input type="submit" value="Create">
     {{ form_end(form) }}
 
     <ul>
@@ -14,3 +30,4 @@
         </li>
     </ul>
 {% endblock %}
+{% block javascripts %}<script src="{{ asset('js/buttonProduct.js')}}"></script>{% endblock %}

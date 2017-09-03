@@ -27,6 +27,8 @@
 }
 
 .buttons{
+   
+    font-size: 14px;
     position: relative;
     float: left;
     display: grid;
@@ -50,7 +52,10 @@ body{
     background: red;
     display: inline-block;
     float: none; 
-    
+}
 
+table, th, td{
+    border: 2px solid black;
+ 
 }
 

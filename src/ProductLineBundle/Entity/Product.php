@@ -29,13 +29,6 @@ class Product
     private $name;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="amount", type="integer")
-     */
-    private $amount;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="UoM", type="string", length=20)
@@ -45,7 +38,7 @@ class Product
     /**
      * @var array
      *
-     * @ORM\Column(name="Specification", type="array")
+     * @ORM\Column(name="Specification", type="array", nullable=true)
      */
     private $specification;
 
@@ -81,29 +74,6 @@ class Product
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set amount
-     *
-     * @param integer $amount
-     * @return Product
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return integer 
-     */
-    public function getAmount()
-    {
-        return $this->amount;
     }
 
     /**

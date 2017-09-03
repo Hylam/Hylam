@@ -42,17 +42,31 @@ class ProductController extends Controller
         $product = new Product();
         $form = $this->createForm('ProductLineBundle\Form\ProductType', $product);
         $form->handleRequest($request);
+        
+        $products = $this->getDoctrine()->getManager()->getRepository('ProductLineBundle:Product')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $ingredients = $_POST['ingredient'];
+            $quantity = $_POST['quantity'];
+            $result = [];
+            for ($i = 0; $i<count($ingredients); $i++){
+                $result[$ingredients[$i]] = $quantity[$i];
+            }
+            
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
 
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
+        
+        
 
         return $this->render('product/new.html.twig', array(
             'product' => $product,
+            'products' => $products,
             'form' => $form->createView(),
         ));
     }
