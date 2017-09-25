@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Product creation</h1>
+    <h1 class="container">Utworzenie Produktu</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
-
-    <div id="addSpecification">
-        <h2>Specyfikacja</h2>
+ <h2>Specyfikacja</h2>
+    <div id="addSpecification" class="container " >
 
         <div class="group addWindow">
             <select name="ingredient[]">
@@ -19,15 +18,13 @@
             <input type="number" name="quantity[]">
         </div>
         <button id="add" type="button" >Dodaj składnik</button>
+        <button id="remove" type="button" >Usuń Składnik</button>
     </div>
 
-    <input type="submit" value="Create">
+    <input type="submit" value="Utwórz">
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-    </ul>
+     <a href="{{ path('product_index') }}"><button type="button">Powrót</button></a>
+
 {% endblock %}
 {% block javascripts %}<script src="{{ asset('js/buttonProduct.js')}}"></script>{% endblock %}

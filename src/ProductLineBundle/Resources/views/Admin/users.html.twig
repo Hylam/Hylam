@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    
+        <h1>Lista Użytkowników </h1>
+    
+
+    <table class="table table-bordered" style="background-color: black">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>email</th>
+                <th>Ostatnie Logowanie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id|e }}</td>
+                <td>{{ user.username|e }}</td>
+                <td>{{ user.email|e }}</td>
+                <td>{{ user.lastLogin|date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}"><button type="button">Dodaj nowego użytkownika</button></a>
+            <a href="{{ path('Index') }}"><button type="button">Ekran Główny</button></a>      
+            
+        </li>
+    </ul>
+    
+
+{% endblock %}

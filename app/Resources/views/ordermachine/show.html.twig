@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ordermachine</h1>
+    <h1>Zamówienie nr: {{ orderMachine.oderNumber }} </h1>
 
-    <table>
+    <table class="table table-bordered" style="background-color: black">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Productid</th>
-                <td>{{ orderMachine.productID }}</td>
+                <td>{{ orderMachine.productName }}</td>
             </tr>
             <tr>
                 <th>Orderamount</th>
@@ -27,17 +27,17 @@
             </tr>
             <tr>
                 <th>Startdate</th>
-                <td>{{ orderMachine.startDate }}</td>
+                <td>{{ orderMachine.startDate|date }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('ordermachine_index') }}">Back to the list</a>
+            <a href="{{ path('ordermachine_index') }}"><button type="button">Powrót</button></a>
         </li>
         <li>
-            <a href="{{ path('ordermachine_edit', { 'id': orderMachine.id }) }}">Edit</a>
+            <a href="{{ path('ordermachine_edit', { 'id': orderMachine.id }) }}"><button type="button">Edycja</button></a>
         </li>
         <li>
             {{ form_start(delete_form) }}

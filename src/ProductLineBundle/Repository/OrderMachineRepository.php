@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrderMachineRepository extends EntityRepository
 {
+    
+    public function getOrders($machineId) {
+        $now = new \DateTime;
+        
+         $tmp = $this
+                 ->_em
+                 ->createQuery('SELECT om '
+                         . 'FROM ProductLineBundle:OrderMachine om '
+                         . 'WHERE om.machineNumber = :machineId'
+                         . ' AND om.startDate <= CURRENT_TIMESTAMP() ' 
+                         . ' AND om.endDate >= CURRENT_TIMESTAMP() '
+                         . '')
+                 ->setParameter('machineId', $machineId)
+                 ->setMaxResults(1)
+                 ->getOneOrNullResult();
+    
+         return$tmp;
+         
+    }
 }
+
+// Zgooglać funkcję NOW 

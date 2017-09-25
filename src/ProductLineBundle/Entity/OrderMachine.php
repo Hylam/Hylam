@@ -31,9 +31,9 @@ class OrderMachine
     /**
      * @var int
      *
-     * @ORM\Column(name="Product_ID", type="integer")
+     * @ORM\Column(name="Product_ID", type="string")
      */
-    private $productID;
+    private $productName;
 
     /**
      * @var int
@@ -45,7 +45,7 @@ class OrderMachine
     /**
      * @var string
      *
-     * @ORM\Column(name="Status", type="string", length=15)
+     * @ORM\Column(name="Status", type="string", length=15, nullable=true)
      */
     private $status;
 
@@ -55,8 +55,46 @@ class OrderMachine
      * @ORM\Column(name="StartDate", type="datetimetz")
      */
     private $startDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="EndDate", type="datetimetz", nullable = true )
+     */
+    private $endDate;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="machineNumber", type="integer")
+     */
+    private $machineNumber;
+    
+    /**
+     * Get machineNumber
+     *
+     * @return integer 
+     */    
+    
+    
+    function getMachineNumber() {
+        return $this->machineNumber;
+    }
 
+    /**
+     * Set machineNumber
+     *
+     * @param integer $machineNumber
+     * @return OrderMachine
+     */   
+    
+    function setMachineNumber(int $machineNumber) {
+        $this->machineNumber = $machineNumber;
+    }
 
+        
+    
+  
     /**
      * Get id
      *
@@ -91,26 +129,25 @@ class OrderMachine
     }
 
     /**
-     * Set productID
+     * Set productName
      *
-     * @param integer $productID
+     * @param string $productName
      * @return OrderMachine
      */
-    public function setProductID($productID)
-    {
-        $this->productID = $productID;
-
-        return $this;
+    
+    function setProductName($productName) {
+        $this->productName = $productName;
     }
 
+    
     /**
-     * Get productID
+     * Get productName
      *
-     * @return integer 
+     * @return string 
      */
-    public function getProductID()
+    public function getProductName()
     {
-        return $this->productID;
+        return $this->productName;
     }
 
     /**
@@ -181,4 +218,28 @@ class OrderMachine
     {
         return $this->startDate;
     }
+    
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return OrderMachine
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
 }

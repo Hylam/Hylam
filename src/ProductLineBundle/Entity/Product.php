@@ -27,6 +27,8 @@ class Product
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
+    
+    private $tmp;
 
     /**
      * @var string
@@ -41,6 +43,12 @@ class Product
      * @ORM\Column(name="Specification", type="array", nullable=true)
      */
     private $specification;
+    
+    public function __toString(){
+        return $this->name;
+    }
+    
+    
 
 
     /**
@@ -121,4 +129,14 @@ class Product
     {
         return $this->specification;
     }
+    
+    function getTmp() {
+        return $this->tmp;
+    }
+
+    function setTmp($tmp) {
+        $this->tmp = $tmp;
+    }
+
+
 }

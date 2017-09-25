@@ -5,7 +5,8 @@ namespace ProductLineBundle\Controller;
 use ProductLineBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Product controller.
@@ -26,6 +27,10 @@ class ProductController extends Controller
 
         $products = $em->getRepository('ProductLineBundle:Product')->findAll();
 
+        foreach($products as $item){
+            $item->setTmp(unserialize($item->getSpecification()));
+        }
+        
         return $this->render('product/index.html.twig', array(
             'products' => $products,
         ));
@@ -44,22 +49,43 @@ class ProductController extends Controller
         $form->handleRequest($request);
         
         $products = $this->getDoctrine()->getManager()->getRepository('ProductLineBundle:Product')->findAll();
+        
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $ingredients = $_POST['ingredient'];
-            $quantity = $_POST['quantity'];
+            $ingredients = $request->request->get('ingredient');
+            $quantity = $request->request->get('quantity'); 
+            $name = $request->request->get('productlinebundle_product'); 
             $result = [];
+ 
+            $findProduct  = $this->getDoctrine()->getManager()->getRepository('ProductLineBundle:Product')->findByName($name['name']);
+            
+            if ($findProduct != null){
+                        return $this->render('product/new.html.twig', array(
+            'product' => $product,
+            'products' => $products,
+            'form' => $form->createView(),
+            ));
+            }
+     
+            
             for ($i = 0; $i<count($ingredients); $i++){
                 $result[$ingredients[$i]] = $quantity[$i];
             }
+            
+            $result = serialize($result);
+            
+            $product->setSpecification($result);
             
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-
+            
+            
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
+            
         }
         
         
@@ -80,6 +106,14 @@ class ProductController extends Controller
     public function showAction(Product $product)
     {
         $deleteForm = $this->createDeleteForm($product);
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $products = $em->getRepository('ProductLineBundle:Product')->findAll();
+        
+         foreach($products as $item){
+         $item->setTmp(unserialize($item->getSpecification()));
+        }
 
         return $this->render('product/show.html.twig', array(
             'product' => $product,

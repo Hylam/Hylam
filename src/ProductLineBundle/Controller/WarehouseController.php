@@ -44,6 +44,16 @@ class WarehouseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $productId = $request->request->get('productlinebundle_warehouse')['material'];
+            
+            $repo= $this->getDoctrine()->getManager()->getRepository('ProductLineBundle:Product');
+            
+            $findProduct = $repo->find($productId);
+            
+            $uom = $findProduct->getUoM();
+            $warehouse->setUoM($uom);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($warehouse);
             $em->flush();

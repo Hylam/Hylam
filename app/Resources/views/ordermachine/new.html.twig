@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ordermachine creation</h1>
+    <h1>Tworzenie nowego zamówienia</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Złóż Zamówienie" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('ordermachine_index') }}">Back to the list</a>
+            <a href="{{ path('ordermachine_index') }}"><button type="button">Powrót</button>t</a>
+
+        </li>
+        <li>
+            <a href="{{ path('Index') }}"><button type="button">Ekran Główny</button></a>  
         </li>
     </ul>
 {% endblock %}

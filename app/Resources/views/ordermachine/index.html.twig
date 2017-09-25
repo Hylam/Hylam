@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ordermachines list</h1>
+    <h1>Lista Zamówień</h1>
 
-    <table>
+    <table class="table table-bordered" style="background-color: black">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Odernumber</th>
-                <th>Productid</th>
-                <th>Orderamount</th>
+                <th>Numer Zamówienia</th>
+                <th>Id Prodcuktu</th>
+                <th>Ilość materiału</th>
                 <th>Status</th>
-                <th>Startdate</th>
+                <th>Numer Maszyny</th>
+                <th>Czas Rozpoczęcia</th>
+                <th>Czas Zakończenia</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,17 +22,19 @@
             <tr>
                 <td><a href="{{ path('ordermachine_show', { 'id': orderMachine.id }) }}">{{ orderMachine.id }}</a></td>
                 <td>{{ orderMachine.oderNumber }}</td>
-                <td>{{ orderMachine.productID }}</td>
+                <td>{{ orderMachine.productName }}</td>
                 <td>{{ orderMachine.orderAmount }}</td>
                 <td>{{ orderMachine.status }}</td>
-                <td>{{ orderMachine.startDate }}</td>
+                <td>{{ orderMachine.machineNumber }}</td>
+                <td>{{ orderMachine.startDate|date }}</td>
+                <td>{{ orderMachine.endDate|date }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('ordermachine_show', { 'id': orderMachine.id }) }}">show</a>
+                            <a href="{{ path('ordermachine_show', { 'id': orderMachine.id }) }}">Pokaż</a>
                         </li>
                         <li>
-                            <a href="{{ path('ordermachine_edit', { 'id': orderMachine.id }) }}">edit</a>
+                            <a href="{{ path('ordermachine_edit', { 'id': orderMachine.id }) }}">Edytuj</a>
                         </li>
                     </ul>
                 </td>
@@ -41,7 +45,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('ordermachine_new') }}">Create a new orderMachine</a>
+            <a href="{{ path('ordermachine_new') }}"><button type="button">Stwórz nowe Zamówienie</button></a>
+            <a href="{{ path('Index') }}"><button type="button">Ekran Główny</button></a>  
         </li>
     </ul>
 {% endblock %}

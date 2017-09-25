@@ -13,7 +13,10 @@ class WarehouseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('material')->add('amount')->add('uoM');
+        $builder->add('material', 'entity', [
+				'class'	=> 'ProductLineBundle:Product',
+				'choice_label' => 'name',
+                ])->add('amount');
     }
     
     /**

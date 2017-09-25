@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Products list</h1>
+    <h1>Lista Produktów</h1>
+    
 
-    <table>
+    <table class="table table-bordered" style="background-color: black">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,14 +20,14 @@
                 <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.uoM }}</td>
-                <td>{% if product.specification %}{{ product.specification|join(', ') }}{% endif %}</td>
+                <td> {% for key, product in product.tmp %}  <li>{{ key }} -{{ product }}</li> {% endfor %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">Pokaż</a>
                         </li>
                         <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edytuj</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +38,9 @@
 
     <ul>
         <li>
-            <a href="{{ path('product_new') }}">Create a new product</a>
+            <a href="{{ path('product_new') }}"><button type="button">Stwórz nowy produkt</button></a>
+            <a href="{{ path('Index') }}"><button type="button">Ekran Główny</button></a>      
+            
         </li>
     </ul>
 {% endblock %}

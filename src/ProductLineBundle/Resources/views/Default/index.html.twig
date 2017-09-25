@@ -1,63 +1,95 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<h1>
-
-    <div class="machine">
-        <div class="machine1">
+    <h1><img src="{{ asset('img/logo.png')}}" class="img-rounded center-block" alt="Cinque Terre" width="1000" height="236" ></h1>
+    <div class="machine jumbotron row center-block" style="background-color: yellowgreen">
+        <div class="machine1 col-md-3">
             <label>Maszyna 1</label>
-            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
-            <div class="machine-panel">
-               Parametry maszyny
-                <ul class="parameters">
-                    <li>Status:</li>
-                    <li>Nr Zamówienia:</li>
-                    <li>Produkt:</li>
-                    <li>Postępy:</li>
+            <div class="">
+                Parametry maszyny
+                <ul class="">
+                    {% if orders['order1'] is defined and orders['order1'] is not null%}
+                        <li>Status: {{ status['status1']}} </li>
+                        <li>Nr Zamówienia: {{ orders['order1'].oderNumber}}</li>
+                        <li>Produkt: {{ orders['order1'].productName}}</li>
+                        <li>Czas Zakończenia: {{ orders['order1'].EndDate|date}} </li>
+                        {% else %}
+                        <li>Status: {{ status['status1']}}</li>
+                        <li>Nr Zamówienia: -</li>
+                        <li>Produkt: -</li>
+                        <li>Czas Zakończenia -</li>
+                        {% endif %}
                 </ul>               
             </div>
         </div>
-        <div class="machine1">
+        <div class="machine1 col-md-3">
             <label>Maszyna 2</label>
-            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
-            <div class="machine-panel">
+            <div class="">
                 Parametry maszyny
-                <ul class="parameters">
-                    <li>Status:</li>
-                    <li>Nr Zamówienia:</li>
-                    <li>Produkt:</li>
-                    <li>Postępy:</li>
+                <ul class="">
+                    {% if orders['order2'] is defined and orders['order2'] is not null%}
+                        <li>Status: {{ status['status2']}}</li>
+                        <li>Nr Zamówienia: {{ orders['order2'].oderNumber}}</li>
+                        <li>Produkt: {{ orders['order2'].productName}}</li>
+                        <li>Postępy: {{ orders['order2'].EndDate|date}}</li>
+                        {% else %}
+                        <li>Status: {{ status['status2']}}</li>
+                        <li>Nr Zamówienia: -</li>
+                        <li>Produkt: -</li>
+                        <li>Czas Zakończenia -</li>
+                        {% endif %}
                 </ul>
             </div>
         </div>
-        <div class="machine1">
+        <div class="machine1 col-md-3">
             <label>Maszyna 3</label>
-            <button type="button" class="button2">Pokaż Zlecenia</button>
+            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
-            <div class="machine-panel">
+            <div class="">
                 Parametry maszyny
-                <ul class="parameters">
-                    <li>Status:</li>
-                    <li>Nr Zamówienia:</li>
-                    <li>Produkt:</li>
-                    <li>Postępy:</li>
+                <ul class="">
+                    {% if orders['order3'] is defined and orders['order3'] is not null%}
+                        <li>Status: {{ status['status3']}}</li>
+                        <li>Nr Zamówienia: {{ orders['order3'].oderNumber}}</li>
+                        <li>Produkt: {{ orders['order3'].productName}}</li>
+                        <li>Postępy: {{ orders['order3'].EndDate|date}}</li>
+                        {% else %}
+                        <li>Status: {{ status['status3']}}</li>
+                        <li>Nr Zamówienia: -</li>
+                        <li>Produkt: -</li>
+                        <li>Czas Zakończenia -</li>
+                        {% endif %}
                 </ul>
-                
+
             </div>
         </div>
+        <div class="machine1 col-md-3">
+            <ul class="list-inline list-groups operation-section">
+                <li><a href="{{ path('admin') }}"  class="btn btn-lg btn-outline-primary list-group-item">
+                       Panel administratora
+                    </a></li>
+                <li><a href="{{ path('ordermachine_index') }}"  class="btn btn-lg btn-outline-primary list-group-item">
+                        Złóż Zamówienie
+                    </a></li>
+                <li><a href="{{ path('product_index') }}"class="btn btn-lg btn-outline-primary list-group-item">
+                      Dodaj Produkt
+                    </a></li>
+                <li><a href="{{ path('warehouse_index') }}" class="btn btn-lg btn-outline-primary list-group-item" role="button">
+                        Stan Magazynowy
+                    </a></li>
+                <li><a href="{{ path('warehouse_new') }}" class="btn btn-lg btn-outline-primary list-group-item" role="button">
+                        Zarządzanie surowcami
+                    </a></li>  
+            </ul>
+        </div> 
     </div>
-    <div class="buttons">
-        <button type="button" class="button">Panel administratora</button>
-        <a href="{{ path('ordermachine_index') }}" class="button">Złóż Zamówienie</button>
-        <a href="{{ path('product_index') }}" class="button">Dodaj Produkt</a>
-        <a href="{{ path('warehouse_index') }}" class="button">Stan Magazynowyt</a>
-        <button type="button" class="button">Zarządzanie surowcami</button>
-        
-    </div>            
- 
-</h1>
+
+
+
 
 
 {% endblock %}

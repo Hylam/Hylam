@@ -13,7 +13,21 @@ class OrderMachineType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('oderNumber')->add('productID')->add('orderAmount')->add('status')->add('startDate');
+        $builder->add('oderNumber')->add('productName', 'entity', [
+				'class'	=> 'ProductLineBundle:Product',
+				'choice_label' => 'name',
+                ])->add('orderAmount')->add('machineNumber', 'choice', array(
+    'choices' => array(
+        'Machine 1' => 1,
+        'Machine 2' => 2,
+        'Machine 3' => 3,
+    ),
+    'choices_as_values' => true,
+    'choice_attr' => function($val, $key, $index) {
+        // adds a class like attending_yes, attending_no, etc
+        return ['class' => 'attending_'.strtolower($key)];
+    },
+))->add('startDate');
     }
     
     /**

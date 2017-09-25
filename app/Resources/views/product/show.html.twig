@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Product</h1>
 
-    <table>
+    <table class="table table-bordered" style="background-color: black">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -19,17 +19,17 @@
             </tr>
             <tr>
                 <th>Specification</th>
-                <td>{% if product.specification %}{{ product.specification|join(', ') }}{% endif %}</td>
+                <td>{% for key, product in product.tmp %}  <li>{{ key }} -{{ product }}</li> {% endfor %}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
+            <a href="{{ path('product_index') }}"><button type="button">Powrót</button><</a>
         </li>
         <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}"><button type="button">Edycja</button></a>
         </li>
         <li>
             {{ form_start(delete_form) }}

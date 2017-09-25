@@ -5,7 +5,8 @@ namespace ProductLineBundle\Controller;
 use ProductLineBundle\Entity\OrderMachine;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Ordermachine controller.
@@ -44,6 +45,19 @@ class OrderMachineController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            
+            $arr = $request->request->get('productlinebundle_ordermachine');
+            $startDate   = $arr['startDate'];
+            
+            
+            $dt = new \DateTime($startDate['date']['year'].'-'.$startDate['date']['month'].'-'.$startDate['date']['day'] .' '.$startDate['time']['hour'].':'. $startDate['time']['minute'] );
+           
+            $orderAmount = $arr['orderAmount'];
+            $endDate = $dt->modify('+' . $orderAmount . ' minutes'); 
+            $orderMachine->setEndDate($endDate);
+                    
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderMachine);
             $em->flush();
