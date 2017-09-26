@@ -31,7 +31,64 @@ class OrderMachineController extends Controller
             'orderMachines' => $orderMachines,
         ));
     }
+    
+    /**
+     * Lists all orderMachine entities.
+     *
+     * @Route("/machine1", name="machine1_index")
+     * @Method("GET")
+     */
+    public function machine1OrderAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $repo = $em->getRepository(OrderMachine::class);
+        
+        $orderMachines = $repo->getOrdersMachine(1);
+
+        return $this->render('ordermachine/index.html.twig', array(
+            'orderMachines' => $orderMachines,
+        ));
+    }
+    
+    /**
+     * Lists all orderMachine entities.
+     *
+     * @Route("/machine2", name="machine2_index")
+     * @Method("GET")
+     */
+    public function machine2OrderAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repo = $em->getRepository(OrderMachine::class);
+        
+        $orderMachines = $repo->getOrdersMachine(2);
+
+        return $this->render('ordermachine/index.html.twig', array(
+            'orderMachines' => $orderMachines,
+        ));
+    }
+    
+    /**
+     * Lists all orderMachine entities.
+     *
+     * @Route("/machine3", name="machine3_index")
+     * @Method("GET")
+     */
+    public function machine3OrderAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repo = $em->getRepository(OrderMachine::class);
+        
+        $orderMachines = $repo->getOrdersMachine(3);
+
+        return $this->render('ordermachine/index.html.twig', array(
+            'orderMachines' => $orderMachines,
+        ));
+    }
+    
     /**
      * Creates a new orderMachine entity.
      *

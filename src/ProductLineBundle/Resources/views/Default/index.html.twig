@@ -5,7 +5,7 @@
     <div class="machine jumbotron row center-block" style="background-color: yellowgreen">
         <div class="machine1 col-md-3">
             <label>Maszyna 1</label>
-            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
+            <a href="{{ path('machine1_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
             <div class="">
                 Parametry maszyny
@@ -26,7 +26,7 @@
         </div>
         <div class="machine1 col-md-3">
             <label>Maszyna 2</label>
-            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
+            <a href="{{ path('machine2_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
             <div class="">
                 Parametry maszyny
@@ -47,7 +47,7 @@
         </div>
         <div class="machine1 col-md-3">
             <label>Maszyna 3</label>
-            <a href="{{ path('ordermachine_index') }}"><button type="button">Pokaż Zlecenia</button></a>
+            <a href="{{ path('machine3_index') }}"><button type="button">Pokaż Zlecenia</button></a>
             <img src="{{ asset('img/Machine.svg')}}" width="200" height="200">
             <div class="">
                 Parametry maszyny
@@ -67,8 +67,10 @@
 
             </div>
         </div>
-        <div class="machine1 col-md-3">
+        <div class="machine1 col-md-3" >
             <ul class="list-inline list-groups operation-section">
+                <li><p id="calendar" class="list-group-item"></p><li>
+                <li><p id="clock" class="list-group-item"></p><li>
                 <li><a href="{{ path('admin') }}"  class="btn btn-lg btn-outline-primary list-group-item">
                        Panel administratora
                     </a></li>

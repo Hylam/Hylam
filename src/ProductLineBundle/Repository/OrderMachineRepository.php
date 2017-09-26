@@ -31,6 +31,22 @@ class OrderMachineRepository extends EntityRepository
          return$tmp;
          
     }
+    
+        public function getOrdersMachine($machineId) {
+        
+         $tmp = $this
+                 ->_em
+                 ->createQuery('SELECT om '
+                         . 'FROM ProductLineBundle:OrderMachine om '
+                         . 'WHERE om.machineNumber = :machineId'
+                         . '')
+                 ->setParameter('machineId', $machineId)
+                 ->getResult();
+                 
+    
+         return $tmp;
+         
+    }
 }
 
 // Zgooglać funkcję NOW 
